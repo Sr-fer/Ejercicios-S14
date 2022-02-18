@@ -1,11 +1,6 @@
 function main() {
     
-var enemigo1 = new Enemigo 
-enemigo1.setVida(100)
-enemigo1.setNivel(2) 
-enemigo1.setAtaque(4) 
-enemigo1.setNombre("Ruperto")
-enemigo1.setDefensa(2)
+var enemigo1 = new Enemigo(100,4,"Ruperto",2,2)
 
 $("#salude").html(enemigo1.vida + "/100")
 $("lvl").html(enemigo1.nivel)
@@ -20,15 +15,9 @@ $(".enemigo").css({
     "border-style":"solid",
     "border-color":"black"
 })
-
-var heroe1 = new Heroe
-heroe1.setVida(100)
+var nombre_heroe = prompt("Nombre del Heroe")
+var heroe1 = new Heroe(100, 10, nombre_heroe, 2, 3, false)
 heroe1.setExperiencia(12)
-heroe1.setNivel(2)
-heroe1.setAtaque(10) 
-heroe1.setNombre(prompt("Elige el nombre de tu heroe"))
-heroe1.setDefensa(3)
-
 $("#saludh").html(heroe1.vida + "/100")
 $("#experiencia").html(heroe1.experiencia)
 $("#nivel").html(heroe1.nivel)
@@ -51,11 +40,11 @@ enemigo1.recibirDanio(enemigo1.vida, heroe1.hacerDanio())
 $("#salude").html(enemigo1.vida + "/100")
 
 //comprobar estado heroe
-if(comprobarEstado() == 1) {
+if(comprobarEstado(heroe1, enemigo1) == 1) {
     var nueva_partida = prompt("Quieres jugar una nueva partida? 1:Si 2:No")
 
 if(nueva_partida == 1) {
-    var heroe1 = new Heroe
+    heroe1 = new Heroe
     heroe1.setVida(100)
     heroe1.setExperiencia(12)
     heroe1.setNivel(2)
@@ -74,7 +63,7 @@ heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio())
 $("#saludh").html(heroe1.vida + "/100")
 
 //comprobar estado enemigo
-if(comprobarEstado() == 0) {
+if(comprobarEstado(heroe1, enemigo1) == 0) {
 
 var nuevo_enemigo = prompt("Quieres generar un nuevo enemigo? 1:Si 2:No")
 
@@ -84,7 +73,7 @@ $("#nivel").html(heroe1.nivel)
 
 
 if(nuevo_enemigo == 1) {
-var enemigo1 = new Enemigo 
+enemigo1 = new Enemigo 
 enemigo1.setVida(100)
 enemigo1.setNivel(2) 
 enemigo1.setAtaque(4) 
@@ -104,16 +93,16 @@ document.getElementById("boton_defensa").disabled = true
 document.getElementById("boton_defensa").addEventListener("click",() => { 
 heroe1.isDefendiendo = true
 
-if(isDefendiendo_comprobacion() == 1) {
-heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio()) - heroe1.defensa
+if(isDefendiendo_comprobacion(heroe1) == 1) {
+heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio())
 $("#saludh").html(heroe1.vida + "/100")
 
 //estado heroe
-    if(comprobarEstado() == 1) {
+    if(comprobarEstado(heroe1, enemigo1) == 1) {
         var nueva_partida = prompt("Quieres jugar una nueva partida? 1:Si 2:No")
     
     if(nueva_partida == 1) {
-        var heroe1 = new Heroe
+        heroe1 = new Heroe
         heroe1.setVida(100)
         heroe1.setExperiencia(12)
         heroe1.setNivel(2)
@@ -130,12 +119,12 @@ $("#saludh").html(heroe1.vida + "/100")
 }
 
 //comprobacion defensa
-else if(isDefendiendo_comprobacion() == -1) {
-heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio())
+else if(isDefendiendo_comprobacion(heroe1) == -1) {
+heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio()) 
 $("#saludh").html(heroe1.vida + "/100")
 
 //estado enemigo
-if(comprobarEstado() == 0) {
+if(comprobarEstado(heroe1, enemigo1) == 0) {
     var nuevo_enemigo = prompt("Quieres generar un nuevo enemigo? 1:Si 2:No")
 
     heroe1.recibirExperiencia(enemigo1.recibirExperiencia(1))
@@ -143,7 +132,7 @@ if(comprobarEstado() == 0) {
     $("#nivel").html(heroe1.nivel) 
 
     if(nuevo_enemigo == 1) {
-    var enemigo1 = new Enemigo 
+    enemigo1 = new Enemigo 
     enemigo1.setVida(100)
     enemigo1.setNivel(2) 
     enemigo1.setAtaque(4) 

@@ -1,5 +1,5 @@
 class Personaje {
-    constructor(vida, ataque, nombre, nivel, defensa){
+    constructor(vida, ataque, nombre, nivel, defensa, isDefendiendo){
         this.vida = vida
         this.ataque = ataque
         this.nombre = nombre

@@ -1,6 +1,6 @@
 class Heroe extends Personaje{
-    constructor(vida, ataque, nombre, nivel, experiencia, defensa){
-    super(vida, ataque, nombre, nivel, experiencia, defensa)
+    constructor(vida, ataque, nombre, nivel, experiencia, defensa, isDefendiendo){
+    super(vida, ataque, nombre, nivel, experiencia, defensa, isDefendiendo)
 }
 getExperiencia() {
     let mensaje_experiencia_heroe;
