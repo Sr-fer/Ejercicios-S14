@@ -93,7 +93,7 @@ document.getElementById("boton_defensa").disabled = true
 document.getElementById("boton_defensa").addEventListener("click",() => { 
 heroe1.isDefendiendo = true
 if(isDefendiendo_comprobacion(heroe1) == 1) {
-heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio()) - heroe1.defensa
+heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio() - heroe1.defensa)
 $("#saludh").html(heroe1.vida + "/100")
 
 //estado heroe
