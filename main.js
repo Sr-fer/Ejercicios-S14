@@ -34,7 +34,7 @@ $(".heroe").css({
 
  //Boton ataque
 document.getElementById("boton_ataque").addEventListener("click",() => { 
-
+heroe1.isDefendiendo = false
 //ataque
 enemigo1.recibirDanio(enemigo1.vida, heroe1.hacerDanio())
 $("#salude").html(enemigo1.vida + "/100")
@@ -92,9 +92,8 @@ document.getElementById("boton_defensa").disabled = true
 //boton defensa
 document.getElementById("boton_defensa").addEventListener("click",() => { 
 heroe1.isDefendiendo = true
-
 if(isDefendiendo_comprobacion(heroe1) == 1) {
-heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio())
+heroe1.recibirDanio(heroe1.vida, enemigo1.hacerDanio()) - heroe1.defensa
 $("#saludh").html(heroe1.vida + "/100")
 
 //estado heroe
